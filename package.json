@@ -1,0 +1,39 @@
+{
+  "name": "minneapolis-next-12",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prebuild": "node ./helpers/loadstaticdata && yarn cache clean",
+    "postbuild": "rm -rf ./public/temp"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
+    "dotenv": "^16.0.3",
+    "eslint": "8.28.0",
+    "eslint-config-next": "13.0.6",
+    "flowbite": "^1.6.3",
+    "flowbite-react": "^0.3.8",
+    "image-downloader": "^4.3.0",
+    "next": "13.0.6",
+    "next-pwa": "^5.6.0",
+    "node-fetch": "2",
+    "piexifjs": "^1.0.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.4.2",
+    "react-markdown": "^8.0.4",
+    "rehype-raw": "^6.1.1",
+    "remark-gfm": "^3.0.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4"
+  }
+}

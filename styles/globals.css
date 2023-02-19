@@ -1,0 +1,58 @@
+@tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-4xl my-3 text-secondary;
+  }
+  h2 {
+    @apply text-3xl my-3 text-secondary;
+  }
+  h3 {
+    @apply text-2xl my-3 text-secondary;
+  }
+  h4 {
+    @apply text-xl my-3 text-secondary;
+  }
+  h5 {
+    @apply text-lg my-3 text-secondary;
+  }
+  h6 {
+    @apply text-lg my-3 text-secondary;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  html {
+    font-family: 'Saira Semi Condensed', sans-serif;
+  }
+  .btnPrimary {
+    @apply bg-primary rounded-lg font-medium py-3 text-center px-6 transition-all text-white
+  }
+
+  .btnPrimary:hover {
+    @apply underline
+  }
+
+  .NavLink {
+    @apply border-transparent border-b lg:border-b-2 transition-all
+  }
+
+  .NavLink:hover {
+    @apply text-primary border-primary
+  }
+
+  .activeNavLink {
+    @apply text-primary border-primary border-b-2
+  }
+
+  /* Links */
+  .socialLink{
+    @apply bg-primary mr-2 transition-all cursor-pointer rounded-full p-3 flex items-center justify-center
+  }
+  .socialLink:hover{
+    @apply scale-105 opacity-90
+  }
+}
