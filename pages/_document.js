@@ -50,14 +50,11 @@ MyDocument.getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
   const { req } = ctx;
 
-  console.log('req.headers.x-forwarded-host', req.headers["x-forwarded-host"]);
-  console.log('req', JSON.stringify(req));
-
   if (!process.browser) {
     const BASE_URL =
-      req.hostname === 'main.d3gk5mrkz2v7oi.amplifyapp.com'
+      req.headers["x-forwarded-host"] === 'main.d3gk5mrkz2v7oi.amplifyapp.com'
         ? 'riversidetowing.us'
-        : req?.headers?.host
+        : req.headers["x-forwarded-host"]
             ?.replace('https://', '')
             .replace('http://', '')
             .replace('www.', '');

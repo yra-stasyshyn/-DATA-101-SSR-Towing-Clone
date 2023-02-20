@@ -142,7 +142,7 @@ const Page = ({ data, breadcrumbs, BASE_URL, images }) => {
 };
 
 export async function getServerSideProps({req}) {
-  const domain = req.hostname === "main.d3gk5mrkz2v7oi.amplifyapp.com" ? "riversidetowing.us" : req.hostname.replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.headers["x-forwarded-host"] === "main.d3gk5mrkz2v7oi.amplifyapp.com" ? "riversidetowing.us" : req.headers["x-forwarded-host"].replace("https://", "").replace("http://", "").replace("www.", "")
 
   const breadcrumbs = [
     {
