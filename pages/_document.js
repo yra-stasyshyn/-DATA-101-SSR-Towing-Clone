@@ -49,7 +49,7 @@ const MyDocument = (props = {}) => {
 MyDocument.getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
   const { req } = ctx;
-  console.log('req.headers.host', req.headers.host);
+  console.log('req.headers', JSON.stringify(req.headers));
 
   if (!process.browser) {
     const BASE_URL =
