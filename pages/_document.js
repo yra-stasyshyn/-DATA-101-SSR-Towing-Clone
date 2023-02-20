@@ -49,8 +49,9 @@ const MyDocument = (props = {}) => {
 MyDocument.getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
   const { req } = ctx;
-  console.log('req.headers', JSON.stringify(req.headers));
-  console.log('req.hostname', JSON.stringify(req.hostname));
+
+  console.log('req.headers.x-forwarded-host', req.headers["x-forwarded-host"]);
+  console.log('req', JSON.stringify(req));
 
   if (!process.browser) {
     const BASE_URL =
