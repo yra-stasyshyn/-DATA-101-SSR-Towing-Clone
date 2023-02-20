@@ -56,7 +56,7 @@ export default function Home({ data, BASE_URL, images }) {
 }
 
 export const getServerSideProps = async ({req}) => {
-  const domain = req.headers.host === "prod.us-east-1.gateway.amplify.aws.dev" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.hostname === "main.d3gk5mrkz2v7oi.amplifyapp.com" ? "riversidetowing.us" : req.hostname.replace("https://", "").replace("http://", "").replace("www.", "")
 
   const response = await fetch(
     `${process.env.API_URL}/api/site?${new URLSearchParams({

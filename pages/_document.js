@@ -50,10 +50,11 @@ MyDocument.getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
   const { req } = ctx;
   console.log('req.headers', JSON.stringify(req.headers));
+  console.log('req.hostname', JSON.stringify(req.hostname));
 
   if (!process.browser) {
     const BASE_URL =
-      req.headers.host === 'prod.us-east-1.gateway.amplify.aws.dev'
+      req.hostname === 'main.d3gk5mrkz2v7oi.amplifyapp.com'
         ? 'riversidetowing.us'
         : req?.headers?.host
             ?.replace('https://', '')
