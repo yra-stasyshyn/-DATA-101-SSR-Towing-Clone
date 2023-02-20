@@ -53,7 +53,7 @@ MyDocument.getInitialProps = async (ctx) => {
 
   if (!process.browser) {
     const BASE_URL =
-      req.headers.host === 'localhost:3000'
+      req.headers.host === 'main.d3gk5mrkz2v7oi.amplifyapp.com'
         ? 'riversidetowing.us'
         : req?.headers?.host
             ?.replace('https://', '')

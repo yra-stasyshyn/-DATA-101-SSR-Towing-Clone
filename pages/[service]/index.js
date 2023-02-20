@@ -53,7 +53,7 @@ const Page = ({ data, params, breadcrumbs, BASE_URL, images }) => {
 
 export const getServerSideProps = async ({ req, res, params }) => {
   const { service } = params;
-  const domain = req.headers.host === "localhost:3000" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.headers.host === "main.d3gk5mrkz2v7oi.amplifyapp.com" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
 
   const homeResponse = await fetch(
     `${process.env.API_URL}/api/site?${new URLSearchParams({
