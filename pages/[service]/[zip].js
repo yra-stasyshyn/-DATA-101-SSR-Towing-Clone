@@ -54,7 +54,7 @@ const Page = ({ data, params, breadcrumbs, BASE_URL, images }) => {
 
 export const getServerSideProps = async ({ req, params }) => {
   const { service, zip } = params;
-  const domain = req.headers.host === "main.d3gk5mrkz2v7oi.amplifyapp.com" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.headers.host === "prod.us-east-1.gateway.amplify.aws.dev" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
 
   if (/[A-Z]/.test("abc")) {
     return {

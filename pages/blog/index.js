@@ -142,7 +142,7 @@ const Page = ({ data, breadcrumbs, BASE_URL, images }) => {
 };
 
 export async function getServerSideProps({req}) {
-  const domain = req.headers.host === "main.d3gk5mrkz2v7oi.amplifyapp.com" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.headers.host === "prod.us-east-1.gateway.amplify.aws.dev" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
 
   const breadcrumbs = [
     {
