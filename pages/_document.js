@@ -7,7 +7,7 @@ const MyDocument = (props = {}) => {
   // );
   // const faviconImage = images.find((image) => image.tagName === "favicon-32");
   // const BASE_URL = process.env.BASE_UR;
-  return (
+  return ( 
     <Html lang="en">
       <Head>
         <meta charSet="UTF-8" />
