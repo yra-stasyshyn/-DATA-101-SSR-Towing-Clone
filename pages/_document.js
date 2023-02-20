@@ -1,5 +1,4 @@
 import Document,{ Html, Head, Main, NextScript } from "next/document";
-import fs from "fs";
 
 const MyDocument = (props = {}) => {
   const { faviconImage, BASE_URL } = props;
@@ -50,10 +49,11 @@ const MyDocument = (props = {}) => {
 MyDocument.getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
   const { req } = ctx;
+  console.log('req.headers.host', req.headers.host);
 
   if (!process.browser) {
     const BASE_URL =
-      req.headers.host === 'data-101-ssr-towing.vercel.app'
+      req.headers.host === 'localhost:3000'
         ? 'riversidetowing.us'
         : req?.headers?.host
             ?.replace('https://', '')
@@ -62,10 +62,8 @@ MyDocument.getInitialProps = async (ctx) => {
     if (!BASE_URL) {
       return initialProps;
     }
-    // const images = require(`../public/${BASE_URL}/json/images.json`);
-    const images = JSON.parse(
-        fs.readFileSync(`${process.cwd()}/json/images.json`, { encoding: "utf-8" })
-      );
+    const imagesResponse = await fetch(`${process.env.API_URL}/api/template-images/domain?domain=${BASE_URL}`);
+    const images = await imagesResponse.json();
     const faviconImage = images.find((image) => image.tagName === 'favicon-32');
 
     return { ...initialProps, faviconImage, BASE_URL };

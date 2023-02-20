@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import Head from "next/head";
 import PageGenerator from "../../generator/PageGenerator";
-import fs from "fs"
 
 const Page = ({ data, params, breadcrumbs, BASE_URL, images }) => {
 
@@ -55,7 +54,7 @@ const Page = ({ data, params, breadcrumbs, BASE_URL, images }) => {
 
 export const getServerSideProps = async ({ req, params }) => {
   const { service, zip } = params;
-  const domain = req.headers.host === "data-101-ssr-towing.vercel.app" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.headers.host === "localhost:3000" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
 
   if (/[A-Z]/.test("abc")) {
     return {
@@ -148,7 +147,8 @@ export const getServerSideProps = async ({ req, params }) => {
     };
   }
 
-  const images = JSON.parse(fs.readFileSync(`${process.cwd()}/json/images.json`, { encoding: "utf-8" }))
+  const imagesResponse = await fetch(`${process.env.API_URL}/api/template-images/domain?domain=${domain}`);
+  const images = await imagesResponse.json();
 
   return {
     props: {

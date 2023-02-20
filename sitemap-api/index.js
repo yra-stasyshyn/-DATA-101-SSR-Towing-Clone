@@ -13,9 +13,8 @@ const withBaseUrl = (baseUrl, relativeUrl) =>
   }`;
 
 export async function getSitemaps(baseUrl) {
-  const imagess = JSON.parse(
-    fs.readFileSync(`${process.cwd()}/json/images.json`, { encoding: "utf-8" })
-  );
+  const imagesResponse = await fetch(`${process.env.API_URL}/api/template-images/domain?domain=${baseUrl}`);
+  const imagess = await imagesResponse.json();
 
   const starSetImage = imagess.find(
     (image) => image?.tagName === "star-set-yellow"

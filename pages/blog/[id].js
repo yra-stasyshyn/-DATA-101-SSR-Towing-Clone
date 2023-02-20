@@ -6,7 +6,6 @@ import { Footer, Nav } from "../../components/containers";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import fs from "fs";
 
 const Page = ({ data, blog, params, breadcrumbs, BASE_URL, images }) => {
   // GOOGLE SEARCH CONSOLE
@@ -106,7 +105,7 @@ const Page = ({ data, blog, params, breadcrumbs, BASE_URL, images }) => {
 };
 
 export async function getServerSideProps({ req, params }) {
-  const domain = req.headers.host === "data-101-ssr-towing.vercel.app" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.headers.host === "localhost:3000" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
 
   const breadcrumbs = [
     {
@@ -146,9 +145,8 @@ export async function getServerSideProps({ req, params }) {
     };
   }
 
-  const images = JSON.parse(
-    fs.readFileSync(`${process.cwd()}/json/images.json`, { encoding: "utf-8" })
-  );
+  const imagesResponse = await fetch(`${process.env.API_URL}/api/template-images/domain?domain=${domain}`);
+  const images = await imagesResponse.json();
 
   return {
     props: {

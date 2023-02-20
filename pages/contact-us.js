@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import Head from "next/head";
 import PageGenerator from "../generator/PageGenerator";
-import fs from "fs"
 
 export default function Page({ data, breadcrumbs, BASE_URL, images }) {
   
@@ -51,7 +50,7 @@ export default function Page({ data, breadcrumbs, BASE_URL, images }) {
 }
 
 export const getServerSideProps = async ({req}) => {
-  const domain = req.headers.host === "data-101-ssr-towing.vercel.app" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.headers.host === "localhost:3000" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
 
   const response = await fetch(
     `${process.env.API_URL}/api/site?${new URLSearchParams({
@@ -62,8 +61,8 @@ export const getServerSideProps = async ({req}) => {
 
   const data = await response.json();
 
-  const images = JSON.parse(fs.readFileSync(`${process.cwd()}/json/images.json`, { encoding: "utf-8" }))
-
+  const imagesResponse = await fetch(`${process.env.API_URL}/api/template-images/domain?domain=${domain}`);
+  const images = await imagesResponse.json();
 
   const breadcrumbs = [
     {

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prebuild": "node ./helpers/loadstaticdata && yarn cache clean",
+    "prebuild": "yarn cache clean",
     "postbuild": "rm -rf ./public/temp"
   },
   "dependencies": {

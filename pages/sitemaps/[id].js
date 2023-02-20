@@ -4,7 +4,7 @@ const Sitemap = () => {};
 
 export const getServerSideProps = async ({req, res, params }) => {
   const id = +params.id;
-  const baseUrl = req.headers.host === "data-101-ssr-towing.vercel.app" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
+  const baseUrl = req.headers.host === "localhost:3000" ? "riversidetowing.us" : req.headers.host.replace("https://", "").replace("http://", "").replace("www.", "")
   
 
   const sitemaps = await getSitemaps(baseUrl);
