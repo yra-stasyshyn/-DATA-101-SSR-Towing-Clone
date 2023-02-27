@@ -56,7 +56,7 @@ export default function Home({ data, BASE_URL, images }) {
 }
 
 export const getServerSideProps = async ({req}) => {
-  const domain = req.headers["x-forwarded-host"] === "main.d3gk5mrkz2v7oi.amplifyapp.com" ? "riversidetowing.us" : req.headers["x-forwarded-host"].replace("https://", "").replace("http://", "").replace("www.", "")
+  const domain = req.headers["x-forwarded-host"].indexOf("amplifyapp.com") ? "riversidetowing.us" : req.headers["x-forwarded-host"].replace("https://", "").replace("http://", "").replace("www.", "")
 
   const response = await fetch(
     `${process.env.API_URL}/api/site?${new URLSearchParams({

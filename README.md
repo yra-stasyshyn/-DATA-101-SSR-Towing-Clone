@@ -16,6 +16,9 @@ amplify add hosting
 # Deploy your project to Amplify
 amplify publish
 
+## Update build settings
+Add the following line under "build:"
+- env | grep -e API_URL >> .env.production
 
 ## Add custom domain to an AWS Amplify app using the CLI
 

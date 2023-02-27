@@ -4,7 +4,7 @@ const Sitemap = () => {};
 
 export const getServerSideProps = async ({req, res, params }) => {
   const id = +params.id;
-  const baseUrl = req.headers["x-forwarded-host"] === "main.d3gk5mrkz2v7oi.amplifyapp.com" ? "riversidetowing.us" : req.headers["x-forwarded-host"].replace("https://", "").replace("http://", "").replace("www.", "")
+  const baseUrl = req.headers["x-forwarded-host"].indexOf("amplifyapp.com") ? "riversidetowing.us" : req.headers["x-forwarded-host"].replace("https://", "").replace("http://", "").replace("www.", "")
   
 
   const sitemaps = await getSitemaps(baseUrl);
