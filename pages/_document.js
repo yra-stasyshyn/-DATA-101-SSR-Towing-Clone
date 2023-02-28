@@ -50,16 +50,10 @@ MyDocument.getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
   const { req } = ctx;
 
-  console.log('============ req.headers', req.headers);
+  console.log('============ req.headers', req.headers); // req.headers is {}
 
   if (!process.browser) {
-    const BASE_URL =
-      req.headers["x-forwarded-host"].indexOf("amplifyapp.com") > 0
-        ? 'riversidetowing.us'
-        : req.headers["x-forwarded-host"]
-          ?.replace('https://', '')
-          .replace('http://', '')
-          .replace('www.', '');
+    const BASE_URL = 'riversidetowing.us';
     if (!BASE_URL) {
       return initialProps;
     }
