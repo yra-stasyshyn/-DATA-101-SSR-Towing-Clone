@@ -1,4 +1,4 @@
-import Document,{ Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 const MyDocument = (props = {}) => {
   const { faviconImage, BASE_URL } = props;
@@ -7,7 +7,7 @@ const MyDocument = (props = {}) => {
   // );
   // const faviconImage = images.find((image) => image.tagName === "favicon-32");
   // const BASE_URL = process.env.BASE_UR;
-  return ( 
+  return (
     <Html lang="en">
       <Head>
         <meta charSet="UTF-8" />
@@ -45,19 +45,19 @@ const MyDocument = (props = {}) => {
       </body>
     </Html>
   );
-}
+};
 MyDocument.getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
   const { req } = ctx;
 
   if (!process.browser) {
     const BASE_URL =
-      req.headers["x-forwarded-host"] === 'main.d3gk5mrkz2v7oi.amplifyapp.com'
+      req.headers["x-forwarded-host"].indexOf("amplifyapp.com") > 0
         ? 'riversidetowing.us'
         : req.headers["x-forwarded-host"]
-            ?.replace('https://', '')
-            .replace('http://', '')
-            .replace('www.', '');
+          ?.replace('https://', '')
+          .replace('http://', '')
+          .replace('www.', '');
     if (!BASE_URL) {
       return initialProps;
     }
